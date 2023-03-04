@@ -9,7 +9,7 @@ import { sortIDDesc } from "@/scripts/helpers/type/arrayHelper";
 import { SidebarFilterToolbar } from "@/src/items/ims/SidebarFilterToolbar";
 import { API_UNITS } from "@/scripts/constants/api";
 
-export default function Component({ unitsArray, fetchConfig }) {
+export default function Component({ unitsArray=[], fetchConfig }) {
 
     
     const app = useContext(AppContext)
