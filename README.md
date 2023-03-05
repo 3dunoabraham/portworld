@@ -1,12 +1,10 @@
 # Inventory Management System Front-End
-This repository contains the front-end for the Inventory Management System (IMS). The IMS provides a web-based user interface for managing inventory for different businesses.
+This repository contains the front-end for Abraham Duno's Portfolio. This NextJs app provides a web-based user interface for managing an inventory of projects for different categories.
 
 ## Tech Stack
 * This project uses the following technologies:
     * [Next.js](https://nextjs.org/)
     * [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
-* This project uses the following  APIs:
-    * For more information on this project, see the [IMS API V1](https://servicepadportal.atlassian.net/wiki/spaces/SP/pages/459538444/Inventory+API+V1)
 
 
 
@@ -33,7 +31,7 @@ npm run test
 ```
 You can view the app by navigating to [http://localhost:3000](http://localhost:3000) in your web browser.
 ### Demo
-Check out a live demo of the project at [ims-f-e-duno.vercel.app (demo)](https://ims-f-e-duno.vercel.app/) (dev)
+Check out a live demo of the project at [portworld.vercel.app (demo)](https://portworld.vercel.app/) (dev)
 
 
 
