@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { BsBox, BsCurrencyDollar } from 'react-icons/bs';
 
 
-export default function Component({ companyName, unitsArray, subtitle="", title="", totalValue=0, url,action }) {
+export default function Component({ children, companyName, unitsArray, subtitle="", color, txColor, title="", totalValue=0, url,action }) {
   return (
     <div className="flex-center flex-justify-start px-3">
       <div className="box-shadow-2 pt-4 w-min-400px bord-r-8">
         <div className="tx-mdl tx-bold-5 mb-3 px-6">{companyName}</div>
         <div className="flex-center flex-justify-start px-6">
-          <div className="ims-bg-primary pa-2 bord-r-10 px-3 pt-3 opaci-75">
-            <div className="tx-white tx-lg">
+          <div className=" pa-2 bord-r-10 px-3 pt-3 opaci-75" style={{color: txColor, background: color}}>
+            <div className=" tx-lg" style={{color: txColor, }}>
               <BsBox />
             </div>
           </div>
@@ -20,6 +20,7 @@ export default function Component({ companyName, unitsArray, subtitle="", title=
             </div>
           </div>
         </div>
+        {children}
         {!!totalValue && 
           <div className="flex-center flex-justify-start px-6">
             <div className="ims-bg-primary pa-2 bord-r-10 px-3 pt-3 opaci-75">

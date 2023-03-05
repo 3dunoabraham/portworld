@@ -18,6 +18,7 @@ import FailedRequest from '../items/atoms/FailedRequest'
 import { AppContext } from '@/scripts/contexts/AppContext'
 import { useRouter } from 'next/router'
 import { OFFLINE_UNITS_ARRAY } from '@/scripts/constants/inventory';
+import Link from 'next/link';
 
 const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
     const router = useRouter()
@@ -65,11 +66,15 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
         code: "Code",
         game: "Games",
     }
-
+    const wiplookup = {
+        art: {txColor:"#ffffff",color:"#74AA57",title:"Art"},
+        code: {txColor:"#ffffff",color:"#F4BA07",title:"Code"},
+        game: {txColor:"#ffffff",color:"#F44A37",title:"Games"},
+    }
     return (
     <div className='flex-center w-100 h-min-100vh'>
         <div className="h-min-100vh w-100  flex-col flex-justify-start flex-align-stretch">
-            <div className="px-8 ">
+            {/* <div className="px-8 ">
                 <BreadCrumbs pages={[]} current="Dashboard" />
                 
                 <div className="flex-center mb-8">
@@ -77,7 +82,7 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                         Abraham Duno's Portfolio
                     </h1>
                 </div>
-            </div>
+            </div> */}
             {q__unitsArray.isLoading &&
                 <div className=' flex-col mt-150'>
                     <LoadingPill title={"Fetching units..."} />
@@ -89,7 +94,19 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 </div> 
             }
             {/* {JSON.stringify(cats)} */}
-            <div className='flex-wrap flex-justify-start gap-4' >
+            <div className='flex-wrap flex-justify-center mt-8 gap-4' >
+                    
+                <div className="flex gap-2">
+                    <div className="a tx-lx flex">
+                        <div className="a tx-lx tx-bold-2">A</div>
+                        brah
+                        <div className="a tx-lx tx-bold-2">am</div>
+                    </div>
+                    <div className="a tx-lx">Duno</div>
+                </div>
+            </div>
+
+            <div className='flex-wrap flex-justify-center mt-8 gap-4' >
                 {cats.map((aCat, index) => {
 
                     const catArray = unitsArray.filter((aUnit,index)=> {return aUnit.category == aCat})
@@ -104,12 +121,44 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                                         key={index}
                                         title=" Projects"
                                         subtitle=" Projects"
-                                        companyName={companyTitles[aCat]}
+                                        companyName={wiplookup[aCat].title}
+                                        color={wiplookup[aCat].color}
+                                        txColor={wiplookup[aCat].txColor}
                                         unitsArray={catArray}
                                         // totalValue={item.totalValue}
-                                        action="View"
+                                        action="Details"
 
-                                    />
+                                    >
+                                        <div className="flex-col px-3 ddb">
+                                            <details className="flex ddr w-100">
+                                                    <summary className='opaci-chov--50 pa-2 w-100 ddg'>
+                                                        Projects
+                                                    </summary>
+                                                    <div className='flex-wrap w-max-400px gap-1 ddg'>
+                                                        {catArray.map((aCatItem,index)=>{
+                                                            if (!aCatItem.url) {
+                                                                return (
+                                                                    <Link href={aCatItem.url} className="flex px-2 opaci-chov--50  py-1 ims-border-faded bord-r-8">
+                                                                        {aCatItem.slug}
+                                                                        <div className="tx-xs">
+                                                                            {!!aCatItem.url ? "+URL" : ""}
+                                                                        </div>
+                                                                    </Link>
+                                                                )
+                                                            }
+                                                            return (
+                                                                <div className="flex px-2 py-1 ims-border-faded bord-r-8 opaci-50 tx-bold-2 tx-sm">
+                                                                    {aCatItem.slug}
+                                                                    <div className="tx-xs">
+                                                                        {!!aCatItem.url ? "+URL" : ""}
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        })}
+                                                    </div>
+                                            </details>
+                                        </div>
+                                    </ImsCard>
                                     ))
                                 }
                         </div>
@@ -117,6 +166,12 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 })}
             
             </div>
+            <Link target="_blank" href="/config/local" className="tx-blue  gap-2 tx-lx flex-center opaci-chov--50 w-100 tx-bold-2 py-6"
+                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
+            >
+                View 3D Showcase
+            </Link>
+
 
             <div className='flex-center  flex-1'>
             </div>
@@ -134,7 +189,9 @@ Page.getLayout = function getLayout(page: ReactElement) {
     return (
     <Layout>
         <Head><title>IMS</title></Head>
-        <SidebarContainer sidebar={<SessionSidebar/>}>{page}</SidebarContainer>
+        {/* <SidebarContainer sidebar={<SessionSidebar/>}> */}
+            {page}
+        {/* </SidebarContainer> */}
     </Layout>
     )
 }
