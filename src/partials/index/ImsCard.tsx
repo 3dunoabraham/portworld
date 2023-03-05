@@ -13,7 +13,7 @@ export default function Component({ children, companyName, unitsArray, subtitle=
               <BsBox />
             </div>
           </div>
-          <div className="pl-4 py-2">
+          <div className="pl-4 py-1">
             <div className="ims-tx-faded py-1">{subtitle}</div>
             <div className="tx-lx tx-bold-6">
               {unitsArray.length || "-"}

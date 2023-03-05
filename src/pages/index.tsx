@@ -94,17 +94,28 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 </div> 
             }
             {/* {JSON.stringify(cats)} */}
-            <div className='flex-wrap flex-justify-center mt-8 gap-4' >
+            <div className='flex-wrap flex-justify-center my-8 gap-4' >
                     
                 <div className="flex gap-2">
-                    <div className="a tx-lx flex">
-                        <div className="a tx-lx tx-bold-2">A</div>
+                    <div className="a tx-xl flex">
+                        <div className="a tx-xl tx-bold-2">A</div>
                         brah
-                        <div className="a tx-lx tx-bold-2">am</div>
+                        <div className="a tx-xl tx-bold-2">am</div>
                     </div>
-                    <div className="a tx-lx">Duno</div>
+                    <div className="a tx-xl">Duno</div>
                 </div>
             </div>
+
+            <Link target="_blank" href="/portfolio" className="tx-blue  gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
+                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
+            >
+                View Portfolio
+            </Link>
+            <Link target="_blank" href="/config/local" className="tx-blue  gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
+                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
+            >
+                View 3D Showcase
+            </Link>
 
             <div className='flex-wrap flex-justify-center mt-8 gap-4' >
                 {cats.map((aCat, index) => {
@@ -166,11 +177,6 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 })}
             
             </div>
-            <Link target="_blank" href="/config/local" className="tx-blue  gap-2 tx-lx flex-center opaci-chov--50 w-100 tx-bold-2 py-6"
-                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
-            >
-                View 3D Showcase
-            </Link>
 
 
             <div className='flex-center  flex-1'>
