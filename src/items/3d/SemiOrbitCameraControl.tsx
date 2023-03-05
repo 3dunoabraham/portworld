@@ -39,8 +39,10 @@ export default function Component ({ /* height, width, length */ }) {
           */
         //  <>
             <OrbitControls  
+
                 args={[camera, domElement]}
                 enableZoom={false}
+                enableDamping={false} enablePan={false}
                 ref={controls}
             />
         //  </>
