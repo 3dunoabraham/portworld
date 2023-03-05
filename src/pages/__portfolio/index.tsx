@@ -188,7 +188,7 @@ Page.getLayout = function getLayout(page: ReactElement) {
     return (
         <Layout>
             <InventoryProvider>
-                <Head><title>Config | IMS</title></Head>
+                <Head><title>Config</title></Head>
                 <SidebarContainer sidebar={<SessionSidebar/>}>{page}</SidebarContainer>
             </InventoryProvider>
         </Layout>

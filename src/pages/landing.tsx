@@ -196,7 +196,7 @@ type PageProps = {
 Page.getLayout = function getLayout(page: ReactElement) {
     return (
     <Layout>
-        <Head><title>IMS</title></Head>
+        <Head><title>Home</title></Head>
         {/* <SidebarContainer sidebar={<SessionSidebar/>}> */}
             {page}
         {/* </SidebarContainer> */}
