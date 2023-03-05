@@ -1,4 +1,4 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { MdRoofing, MdBorderLeft, MdBorderRight } from "react-icons/md";
 import { MdFlipToBack } from "react-icons/md";
 import { FaWarehouse } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { TfiLayoutSidebarLeft } from "react-icons/tfi";
 import { AiOutlineCaretUp, AiOutlineVerticalAlignBottom } from "react-icons/ai";
 
 
-import CameraControl from "@/src/items/3d/CameraControl";
+import SemiOrbitCameraControl from "@/src/items/3d/SemiOrbitCameraControl";
 import CustomPillars from "@/src/items/3d/CustomPillars";
 import ShapeContainer from "@/src/items/3d/ShapeContainer";
 import RoofContainer from "@/src/items/3d/RoofContainer";
@@ -19,9 +19,12 @@ import CustomHorizontalWallDoor from "./CustomHorizontalWallDoor";
 
 import { forwardRef, useContext, useImperativeHandle, useMemo, useState,  } from 'react'
 import CustomBox from "./CustomBox";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import * as THREE from "three";
 
 const Component = forwardRef(({}:any, ref)=>{
-    
+    // const { camera, gl: { domElement }, } = useThree();
+    const ccc = THREE.Camera
     useImperativeHandle(ref, ()=>({
         // testConnect: () => {
         //     console.log("connected")
@@ -67,7 +70,6 @@ const Component = forwardRef(({}:any, ref)=>{
         let oldBool = optsToggler[opt].bool
         s__optsToggler({...optsToggler,...{[opt]:{bool:!oldBool}}})
     }
-    
     // const roofWidth = 0.3
     // const wallWidth = 0.5
     const roofWidth = 0.2
@@ -208,8 +210,15 @@ const Component = forwardRef(({}:any, ref)=>{
                 </div>
             </div>
         </div>
-        <Canvas shadows  onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} >
-            <CameraControl width={xOut} length={zOut} height={yOut}  />
+        <Canvas shadows  onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}
+            
+            camera={{ fov: 50, position: [-xOut*2, yOut/4, zOut*2] }} 
+        >
+            <SemiOrbitCameraControl  />
+            {/* <PerspectiveCamera  position={[-xOut*1.5, yOut/2, zOut*3]} /> */}
+            {/* <SemiOrbitCameraControl width={20} length={10} height={20}  /> */}
+            {/* <OrbitControls /> */}
+            {/* <Camera /> */}
             <ambientLight intensity={0.35} />
             <pointLight castShadow intensity={1.2} position={[xOut*2, yOut*2, zOut*1.5]} />
             <pointLight castShadow intensity={0.5} position={[xOut*1.1, yOut*1.1, -zOut*1.2]} />
@@ -245,10 +254,20 @@ const Component = forwardRef(({}:any, ref)=>{
                     wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
                 /> 
             }
+            {/* <TheCamera /> */}
         </Canvas>
     </div>)
 })
+function TheCamera() {
+    
+    useThree(({camera}) => {
+        camera.rotation.set(0, 0, 0);
+      });
 
+    return (
+        <OrbitControls target={[.6, .4, 0]}/>
+    )
+}
 Component.displayName = 'BoxContainer'
 
 export default Component

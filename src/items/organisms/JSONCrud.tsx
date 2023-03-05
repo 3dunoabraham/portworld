@@ -112,14 +112,32 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
 
 
             <div className="flex-col flex-1 gap-2 w-100 ">
-                <div className="flex-col flex-align-stretch w-100">
+                <div className="flex flex-align-start w-100 gap-2 ">
 
-                    <div className="flex  gap-4 flex-align-start my-2 ">
+                    <div className="flex  gap-4 flex-align-start  ">
 
                             <MetadataCrudForm {...{ theUrl:keyName in keyConfig ? keyConfig[keyName].baseUrl : "/api/settings/", q__queriedObj, 
                                 masterKeyName: keyName, backup: theJsonArray, queriedArray: localJson[keyName]
                             }} ref={$jsonCrudForm} />
                     </div>
+                    {keyName in localJson && selectedItemIndex > -1 &&
+                        <div className="ims-border-faded bord-r-8 pa-2">
+
+                            {!!localJson[keyName][selectedItemIndex].colVal &&
+                                <div className="flex gap-1 ">
+                                    {Object.keys(JSON.parse(localJson[keyName][selectedItemIndex].colVal)).map((anItem, index) => {
+                                        return (
+                                            <div className="px-2 py-1 bg-b-20 bord-r-8 opaci-chov--50" key={index}
+                                                onClick={()=>{updateSelectedColName(anItem)}}
+                                            >
+                                                {anItem}
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            }
+                        </div>
+                    }
                     {theJsonArray && theJsonArray.length > 0 && <div className=" opaci-50 tx-end"> *Backup from Local Storage </div> }
                 </div>
 
@@ -142,6 +160,19 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
                         {/* {JSON.parse(localJson[keyName][selectedItemIndex].colVal)} */}
                         <hr className="my-2"/>
                         
+                        {/* {!!localJson[keyName][selectedItemIndex].colVal &&
+                            <div className="flex gap-1 ma-2">
+                                {Object.keys(JSON.parse(localJson[keyName][selectedItemIndex].colVal)).map((anItem, index) => {
+                                    return (
+                                        <div className="px-2 py-1 bg-b-20 bord-r-8 opaci-chov--50" key={index}
+                                            onClick={()=>{updateSelectedColName(anItem)}}
+                                        >
+                                            {anItem}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        } */}
                         
                         {!localJson[keyName][selectedItemIndex].colVal && 
                             <div className="flex opaci-25 mb-8">
@@ -155,19 +186,6 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
                             />
                         }
                         {/* <hr className="my-2"/> */}
-                        {!!localJson[keyName][selectedItemIndex].colVal &&
-                            <div className="flex gap-1 ma-2">
-                                {Object.keys(JSON.parse(localJson[keyName][selectedItemIndex].colVal)).map((anItem, index) => {
-                                    return (
-                                        <div className="px-2 py-1 bg-b-20 bord-r-8 opaci-chov--50" key={index}
-                                            onClick={()=>{updateSelectedColName(anItem)}}
-                                        >
-                                            {anItem}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        }
                     </>}
                 </div>
             </div>
