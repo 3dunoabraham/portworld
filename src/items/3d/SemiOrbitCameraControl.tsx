@@ -11,7 +11,7 @@ export default function Component ({ /* height, width, length */ }) {
     // camera.position.y = -1
     useFrame((state) => {
     // // //   light.current.target.position.lerp(vec.set((state.mouse.x * viewport.width) / 2, (state.mouse.y * viewport.height) / 2, 0), 0.1)
-        state.camera?.lookAt(new THREE.Vector3((state.mouse.x * viewport.width) / 2, (state.mouse.y * viewport.height) - 2,0))
+        state.camera?.lookAt(new THREE.Vector3((state.mouse.x * viewport.width) / 10, (state.mouse.y * viewport.height) / 5 - 2,0))
     // // //     state.camera.up = new THREE.Vector3(0, 1, 0);
         state.camera.updateProjectionMatrix()
     //         // camera.position.x = -width
@@ -40,6 +40,7 @@ export default function Component ({ /* height, width, length */ }) {
         //  <>
             <OrbitControls  
                 args={[camera, domElement]}
+                enableZoom={false}
                 ref={controls}
             />
         //  </>
