@@ -31,6 +31,7 @@ export default function Component({ unitsArray=[], fetchConfig={} }) {
         let filteredUnitsArray = newUnitsArray.filter((theUnit, index) => {
             if (app.filters.sales_status && theUnit.sales_status != app.filters.sales_status.id) { return false }
             if (app.filters.dealer && theUnit.dealer != app.filters.dealer.label) { return false }
+            if (app.filters.category && theUnit.category != app.filters.category.label) { return false }
             return true
         })
         return filteredUnitsArray.sort(sortIDDesc)
@@ -51,6 +52,15 @@ export default function Component({ unitsArray=[], fetchConfig={} }) {
         defaultSettingsJson[TABLE_SETTINGS_JSON[aPro].key] = JSON.parse(TABLE_SETTINGS_JSON[aPro].colVal)
     })
     const localSettings = useMemo(()=>{
+        console.log("defaultSettingsJson.rest", defaultSettingsJson.rest)
+        if (!defaultSettingsJson.rest) {
+            return {
+                key:{title:"UID",name:"uid"},
+                rest:{
+                    col1:{"title":"Category","fieldName":"category"},
+                },
+            }
+        }
         let theRestKeys = Object.keys(defaultSettingsJson.rest)
         let theRest:any = {}
         theRestKeys.map((restKey, index) => {
@@ -62,15 +72,15 @@ export default function Component({ unitsArray=[], fetchConfig={} }) {
             rest: theRest
         }
     },[LOCAL_SETTINGS_JSON])
-    // const tableConfigObj = {
-    //     key:{title:"UID",name:"uid"},
-    //     rest:{
-    //         vin:{"title":"VIN","fieldName":"vin"},
-    //         status:{"title":"Status","fieldName":"sales_status","widget":"badge"},
-    //         location:{"title":"Location","fieldName":"location"},
-    //         dealer:{"title":"Dealer","fieldName":"dealer"},
-    //     },
-    // }
+    const tableConfigObj = {
+        key:{title:"UID",name:"uid"},
+        rest:{
+            vin:{"title":"VIN","fieldName":"vin"},
+            status:{"title":"Status","fieldName":"sales_status","widget":"badge"},
+            location:{"title":"Location","fieldName":"location"},
+            dealer:{"title":"Dealer","fieldName":"dealer"},
+        },
+    }
 
     const deleteUnit = async (id)=>{
         let fetchDeleteRes:any = await fetchDelete(API_UNITS, {uids:[id]})
@@ -94,8 +104,8 @@ export default function Component({ unitsArray=[], fetchConfig={} }) {
                 />
             </div>
         }
-        {JSON.stringify(localSettings)}
-        <hr/>
+        {/* {JSON.stringify(localSettings)} */}
+        {/* <hr/> */}
 
         
         {/* {pq__units.length > 0 &&

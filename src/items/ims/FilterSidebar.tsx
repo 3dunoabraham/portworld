@@ -17,14 +17,18 @@ export default function Component({ online=true }) {
     const app = useContext(AppContext)
     // console.log("online", app.online)
     const INVENTORY_FILTERS_OBJ = {
-        sales_status:{
-            filter: {title: "Sales Status",optField: "label", optName:"sales_status", fieldName:"label"},
+        // sales_status:{
+        //     filter: {title: "Sales Status",optField: "label", optName:"sales_status", fieldName:"label"},
+        //     optsArray: [],
+        // },
+        // dealer:{
+        //     filter: {title: "Dealer",optField: "name", optName:"dealer", fieldName:"name"},
+        //     optsArray: [],
+        // },
+        category:{
+            filter: {title: "Category",optField: "label", optName:"category", fieldName:"label"},
             optsArray: [],
         },
-        dealer:{
-            filter: {title: "Dealer",optField: "name", optName:"dealer", fieldName:"name"},
-            optsArray: [],
-        }
     }
     const q_foreigns:any = useQuery({queryKey: ['statusesData'], queryFn: async () =>
         app.online ? await fetchUnitForeigns() : FAKE_UNIT_FOREIGNS
@@ -60,14 +64,24 @@ export default function Component({ online=true }) {
 
     const filtersObj = useMemo(() => {
         const lookupTable = {
-            sales_status: {
-                optsArray: q__foreigns.sales_statuses,
-                arrayPropertyKeyName: 'sales_statuses',
-                filterByProperty: 'sales_status',
-                keyFieldName: "id",
-            },
-            dealer: {
-                optsArray: q__foreigns.dealers,
+            // sales_status: {
+            //     optsArray: q__foreigns.sales_statuses,
+            //     arrayPropertyKeyName: 'sales_statuses',
+            //     filterByProperty: 'sales_status',
+            //     keyFieldName: "id",
+            // },
+            // dealer: {
+            //     optsArray: q__foreigns.dealers,
+            //     arrayPropertyKeyName: 'dealers',
+            //     filterByProperty: 'dealer',
+            //     keyFieldName: "name",
+            // },
+            category: {
+                optsArray: [
+                    {id:"1",label:"art"},
+                    {id:"2",label:"code"},
+                    {id:"3",label:"game"},
+                ],
                 arrayPropertyKeyName: 'dealers',
                 filterByProperty: 'dealer',
                 keyFieldName: "name",
@@ -77,7 +91,8 @@ export default function Component({ online=true }) {
         const filtersObj = { ...INVENTORY_FILTERS_OBJ };
       
         Object.keys(lookupTable).forEach((key) => {
-          const { optsArray, arrayPropertyKeyName, filterByProperty, keyFieldName } = lookupTable[key];
+            // console.log("lookupTable[key]", lookupTable[key])
+        const { optsArray, arrayPropertyKeyName, filterByProperty, keyFieldName } = lookupTable[key];
           filtersObj[key].optsArray = q__foreigns[arrayPropertyKeyName];
           if (inv.unitsArray.length > 0) {
             filtersObj[key].optsArray = optsArray.map((anItem, index) => {

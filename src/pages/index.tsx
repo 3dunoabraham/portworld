@@ -100,13 +100,14 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                                 {/* |{JSON.stringify(unitsArray[0])} */}
                                 {unitsArray.length > 0 && inventoryItems.map((item, index) => (
                                     <ImsCard
-                                        url={"/portfolio/"+aCat}
+                                        url={"/portfolio?cat="+aCat}
                                         key={index}
                                         title=" Projects"
                                         subtitle=" Projects"
                                         companyName={companyTitles[aCat]}
                                         unitsArray={catArray}
                                         // totalValue={item.totalValue}
+                                        action="View"
 
                                     />
                                     ))

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BsBox, BsCurrencyDollar } from 'react-icons/bs';
 
 
-export default function Component({ companyName, unitsArray, subtitle="", title="", totalValue=0, url }) {
+export default function Component({ companyName, unitsArray, subtitle="", title="", totalValue=0, url,action }) {
   return (
     <div className="flex-center flex-justify-start px-3">
       <div className="box-shadow-2 pt-4 w-min-400px bord-r-8">
@@ -35,7 +35,7 @@ export default function Component({ companyName, unitsArray, subtitle="", title=
         }
         <hr className="mt-3" />
         <Link href={url} className="px-6 opaci-chov--50 block">
-          <div className="ims-tx-primary tx-bold-5 py-4 tx-end">Manage</div>
+          <div className="ims-tx-primary tx-bold-5 py-4 tx-end">{action}</div>
         </Link>
       </div>
     </div>

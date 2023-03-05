@@ -24,7 +24,8 @@ const Page: NextPageWithLayout = () => {
     const [isConfigEdit, s__isConfigEdit] = useState(false)
     const [q__unitsArray, unitsArray] = useQueryPlus({ queryKey: ['unitData'], 
         queryFn: async () =>{
-            const theList = await fetchJsonArray(API_UNITS, "Units")
+            // const theList = await fetchJsonArray(API_UNITS, "Units")
+            const theList = await fetchJsonArray("https://duno.vercel.app/projects.json")
             inv.s__unitsArray(theList)
             return theList
         }

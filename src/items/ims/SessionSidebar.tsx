@@ -31,17 +31,17 @@ export default function Component({}) {
                 </button>
             </div>
             <div className='flex-1'>
-                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsStack /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">Tutorials</div>
                 </Link>
-                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">API</div>
                 </Link>
-                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">Contact</div>
@@ -63,17 +63,17 @@ export default function Component({}) {
                 </button>
             </div>
             <div className='flex-1'>
-                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsFiles /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">Tutorials</div>
                 </Link>
-                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsStack /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">API</div>
                 </Link>
-                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
                     <div className="flex-1 pl-3 Q_lg_x w-min-220px">Contact</div>
@@ -88,7 +88,7 @@ export default function Component({}) {
                         </div>
                     )}
                     return (
-                    <Link key={index}  className="flex-center py-1 clickble  px-2 bg-w-hov-10  " href={`/config/${anUnit.label}`} /* onClick={()=>{router.reload()}} */ >
+                    <Link key={index}  className="flex-center py-1 clickble  px-2 bg-b-hov-10  " href={`/config/${anUnit.label}`} /* onClick={()=>{router.reload()}} */ >
                         <div className=" pr-3  Q_lg_x"></div>
                         <div className="px-1 tx-center tx-lg opaci-hov--50"><BsFillArchiveFill /></div>
                         <div className="flex-1 pl-3 Q_lg_x w-min-220px">{anUnit.label.replace("_"," ").toUpperCase()}</div>
@@ -97,12 +97,12 @@ export default function Component({}) {
                 })}
             </div>
             <div className=''>
-                <Link href="/config/local" className="flex-center py-2 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/config/local" className="flex-center py-2 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsInfoCircle /></div>
                     <div className="flex-1 pl-1 Q_lg_x w-min-220px">Support</div>
                 </Link>
-                <Link href="/config/global" className="flex-center py-2 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/config/global" className="flex-center py-2 clickble  px-2 bg-b-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsGear /></div>
                     <div className="flex-1 pl-1 Q_lg_x w-min-220px">Settings</div>
