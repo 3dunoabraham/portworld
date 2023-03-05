@@ -12,16 +12,13 @@ import { BreadCrumbs } from '../items/atoms/BreadCrumbs'
 import { useQueryPlus } from '@/scripts/helpers/useHooksHelper'
 import { API_UNITS, LOCAL_URL } from '@/scripts/constants/api'
 import { _parseDecimals } from '@/scripts/helpers/mathHelper'
-import DarkImsCard from '@/src/partials/index/DarkImsCard'
+import ImsCard from '@/src/partials/index/ImsCard'
 import LoadingPill from '../items/atoms/LoadingPill'
 import FailedRequest from '../items/atoms/FailedRequest'
 import { AppContext } from '@/scripts/contexts/AppContext'
 import { useRouter } from 'next/router'
 import { OFFLINE_UNITS_ARRAY } from '@/scripts/constants/inventory';
 import Link from 'next/link';
-import { BsGear, BsGithub, BsMenuButton, BsSafe, BsTwitter } from 'react-icons/bs';
-import { HiCubeTransparent } from 'react-icons/hi2';
-import { ImBook } from 'react-icons/im';
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
     const router = useRouter()
@@ -72,13 +69,13 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
         game: "Games",
     }
     const wiplookup = {
-        art: {txColor:"#ffffff",color:"#33A9FE",title:"Art"},
-        code: {txColor:"#ffffff",color:"#35DF91",title:"Code"},
-        game: {txColor:"#ffffff",color:"#EC4F30",title:"Games"},
+        art: {txColor:"#ffffff",color:"#74AA57",title:"Art"},
+        code: {txColor:"#ffffff",color:"#F4BA07",title:"Code"},
+        game: {txColor:"#ffffff",color:"#F44A37",title:"Games"},
     }
     return (
-    <div className='flex-col w-100 h-min-100vh ' style={{background:"#0d0d0d"}} >
-        <div className="h-min-100vh w-100  flex-col flex-justify-start flex-align-stretch" style={{background:"#000000"}} >
+    <div className='flex-center w-100 h-min-100vh'>
+        <div className="h-min-100vh w-100  flex-col flex-justify-start flex-align-stretch">
             {/* <div className="px-8 ">
                 <BreadCrumbs pages={[]} current="Dashboard" />
                 
@@ -88,38 +85,8 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                     </h1>
                 </div>
             </div> */}
-            <div className='flex flex-justify-center my-8 gap-4' >
-                    
-                <div className="flex gap-2 tx-white px-4">
-                    <div className="a tx-xl flex">
-                        <div className="a tx-xl tx-bold-8">3</div>
-                        <div className="a tx-xl tx-bold-3">DU</div>
-                        <div className="a tx-xl tx-bold-5">N</div>
-                        <div className="a tx-xl tx-bold-6">O</div>
-                    </div>
-                    {/* <div className="a tx-xl">Duno</div> */}
-                </div>
-                <div className='flex-1'>
-                </div>
-
-                <div className='tx-white  pos-rel'>
-                    <div className=' tx-blue  tx-xl px-8 opaci-chov--50 '
-                        style={{filter: "hue-rotate(-189deg) brightness(666%)", }}
-                    >
-                        <HiCubeTransparent />
-                    </div>
-                    <div className='tx-white blur-4 z-500 pos-abs top-0 left-0'>
-                        <Link href="/config/global/" className=' tx-blue tx-xl px-8 opaci-chov--50 '
-                            style={{filter: "hue-rotate(-189deg) brightness(666%)", }}
-                        >
-                            <HiCubeTransparent />
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            
             {q__unitsArray.isLoading &&
-                <div className=' flex-col  my-8' style={{filter: "hue-rotate(180deg) brightness(250%)"}}>
+                <div className=' flex-col mt-150'>
                     <LoadingPill title={"Fetching units..."} />
                 </div> 
             }
@@ -129,45 +96,30 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 </div> 
             }
             {/* {JSON.stringify(cats)} */}
-            <div className='flex-center'>
-                <div className="flex-col py-8  pt-200" style={{border:"1px solid #FED034"}}>
-                    <Link target="_blank" href="/portfolio" className="tx-blue px-6 gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
-                        style={{filter: "hue-rotate(-189deg) brightness(666%)"}}
-                    >
-                        View Portfolio
-                    </Link>
-                    <Link target="_blank" href="/config/local" className="tx-blue px-6 gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
-                        style={{filter: "hue-rotate(-189deg) brightness(666%)"}}
-                    >
-                        View 3D Showcase
-                    </Link>
+            <div className='flex-wrap flex-justify-center my-8 gap-4' >
+                    
+                <div className="flex gap-2">
+                    <div className="a tx-xl flex">
+                        <div className="a tx-xl tx-bold-2">A</div>
+                        brah
+                        <div className="a tx-xl tx-bold-2">am</div>
+                    </div>
+                    <div className="a tx-xl">Duno</div>
                 </div>
-            </div>
-            <div className='flex-1'>
             </div>
 
-            <div className='flex-col   '>
-                <div className='flex w-100 w-max-1080px gap-2  '>
-                    <Link href="https://github.com/3dunoabraham" target="_blank"  className="bg-w-10 pa-3 opaci-chov--50">
-                        <div className="flex bg-white bord-r-100p tx-lx pa-1">
-                            <BsGithub />
-                        </div>
-                    </Link>
-                    <Link href="https://twitter.com/alt_dunno" target="_blank"  className="bg-w-10 pa-3 opaci-chov--50">
-                        <div className="flex bg-white bord-r-100p tx-lx pa-1">
-                            <BsTwitter />
-                        </div>
-                    </Link>
-                    <Link href="https://dev.to/3dunoabraham" target="_blank" className="bg-w-10 pa-3 opaci-chov--50">
-                        <div className="flex bg-white bord-r-100p tx-lx pa-1">
-                            <ImBook />
-                        </div>
-                    </Link>
-                </div>
-            </div>
-        </div>
-        <div className="h-min-100vh w-100  flex-col " >
-            <div className='flex-wrap flex-justify-center gap-5 my-100 w-max-1080px' >
+            <Link target="_blank" href="/portfolio" className="tx-blue  gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
+                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
+            >
+                View Portfolio
+            </Link>
+            <Link target="_blank" href="/config/local" className="tx-blue  gap-2 tx-lgx flex-center opaci-chov--50 w-100 tx-bold-2 py-2"
+                style={{filter: "hue-rotate(-50deg) brightness(250%)"}}
+            >
+                View 3D Showcase
+            </Link>
+
+            <div className='flex-wrap flex-justify-center mt-8 gap-4' >
                 {cats.map((aCat, index) => {
 
                     const catArray = unitsArray.filter((aUnit,index)=> {return aUnit.category == aCat})
@@ -177,7 +129,7 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                                 {/* |{catArray.length}| */}
                                 {/* |{JSON.stringify(unitsArray[0])} */}
                                 {unitsArray.length > 0 && inventoryItems.map((item, index) => (
-                                    <DarkImsCard
+                                    <ImsCard
                                         url={"/portfolio?cat="+aCat}
                                         key={index}
                                         title=" Projects"
@@ -197,7 +149,7 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                                                     </summary>
                                                     <div className='flex-wrap w-max-400px gap-1 ddg'>
                                                         {catArray.map((aCatItem,index)=>{
-                                                            if (!!aCatItem.url) {
+                                                            if (!aCatItem.url) {
                                                                 return (
                                                                     <Link href={aCatItem.url} className="flex px-2 opaci-chov--50  py-1 ims-border-faded bord-r-8">
                                                                         {aCatItem.slug}
@@ -219,7 +171,7 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                                                     </div>
                                             </details>
                                         </div>
-                                    </DarkImsCard>
+                                    </ImsCard>
                                     ))
                                 }
                         </div>
