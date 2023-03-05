@@ -11,14 +11,14 @@ export default function Component({ children }) {
                 <div className="flex-1">
                     {children}
                 </div>
-                <button className="pa-1 pt-2 tx-lgx tx-white  opaci-chov--50" onClick={() => signOut()}>
+                <button className="pa-1 pt-2 tx-lgx tx-  opaci-chov--50" onClick={() => signOut()}>
                     <BsBoxArrowRight />
                 </button>
             </div>
         );
     }
     return (
-    <button className="w-100 tx-mdl nowrap  bg-w-10 pa-2 tx-white bord-r-8 opaci-chov--50"
+    <button className="w-100 tx-mdl nowrap  bg-b-20 pa-2 tx- bord-r-8 opaci-chov--50"
         onClick={() => signIn()}
     >
         <div className="Q_lg_x">Sign in</div>

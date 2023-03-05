@@ -3,7 +3,7 @@ import LoginBtn from "@/src/items/atoms/LoginBtn";
 import SidebarHeader from "@/src/items/ims/SidebarHeader";
 import Link from "next/link";
 import Image from "next/image";
-import { BsFillArchiveFill, BsGear, BsInfoCircle, BsPerson, BsStack } from "react-icons/bs";
+import { BsFile, BsFiles, BsFillArchiveFill, BsGear, BsInfoCircle, BsPerson, BsStack } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { InventoryContext } from "@/scripts/contexts/InventoryContext";
 import { useContext, useEffect, useMemo } from "react";
@@ -19,50 +19,64 @@ export default function Component({}) {
         <div className="flex-col  Q_sm_x invisible ">
             <div className='flex px-3 px- w-100'>
                 
-                <button onClick={()=>{handleClick("/")}} className='tx-white  tx-lgx nodeco py-4 flex-center '>
-                    <div className='bg-white px-1 pt-1 bord-r-10 scale-90'>
-                        <Image src='/icons/logo.svg' alt='next' width='28' height='28'/>
+                <button onClick={()=>{handleClick("/")}} className=' tx-lgx nodeco py-4 flex-center '>
+                    <div className='bg-white px-1 pl-2 pt-1 bord-r-10 scale-90'>
+                        {/* <Image src='/icons/logo.svg' alt='next' width='28' height='28'/> */}
+                        port
                     </div>
-                    <div className='Q_lg_x pl-1'>
-                        <Image src='/icons/Vector.png' alt='next' width='129' height='19'/>
+                    <div className='Q_lg_x pl-'>
+                        {/* <Image src='/icons/Vector.png' alt='next' width='129' height='19'/> */}
+                        world
                     </div>
                 </button>
             </div>
             <div className='flex-1'>
-                <Link href="/agreements" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsStack /></div>
-                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Agreements</div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Tutorials</div>
                 </Link>
-                <Link href="/users" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
-                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Users</div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">API</div>
+                </Link>
+                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                    <div className=" pr-3  Q_lg_x"></div>
+                    <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Contact</div>
                 </Link>
             </div>
         </div>
 
         <div className="h-100vh flex-col pos-fix top-0  left-0 Q_sm_x ">
             <div className='flex px-3 px- w-100'>
-                <button onClick={()=>{handleClick("/")}} className='tx-white  tx-lgx nodeco py-4 flex-center '>
-                    <div className='bg-white px-1 pt-1 bord-r-10 scale-90'>
-                        <Image src='/icons/logo.svg' alt='next' width='28' height='28'/>
+                <button onClick={()=>{handleClick("/")}} className='  tx-lgx nodeco py-4 flex-center '>
+                    <div className='bg-white px-1 pl-2 pt-1 bord-r-10 scale-90 tx-gray pb-1'>
+                        port
+                        {/* <Image src='/icons/logo.svg' alt='next' width='28' height='28'/> */}
                     </div>
-                    <div className='Q_lg_x pl-1'>
-                        <Image src='/icons/Vector.png' alt='next' width='129' height='19'/>
+                    <div className='Q_lg_x pl- '>
+                        world
+                        {/* <Image src='/icons/Vector.png' alt='next' width='129' height='19'/> */}
                     </div>
                 </button>
             </div>
             <div className='flex-1'>
-                <Link href="/agreements" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/tutorials" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                    <div className=" pr-3  Q_lg_x"></div>
+                    <div className="px-1 tx-center tx-lg opaci-hov--50"><BsFiles /></div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Tutorials</div>
+                </Link>
+                <Link href="/api" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsStack /></div>
-                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Agreements</div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">API</div>
                 </Link>
-                <Link href="/users" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
+                <Link href="/portfolio" className="flex-center py-3 clickble  px-2 bg-w-hov-10  ">
                     <div className=" pr-3  Q_lg_x"></div>
                     <div className="px-1 tx-center tx-lg opaci-hov--50"><BsPerson /></div>
-                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Users</div>
+                    <div className="flex-1 pl-3 Q_lg_x w-min-220px">Contact</div>
                 </Link>
                 <hr className="w-100 opaci-10 my-3" style={{borderColor: "white"}} />
                 {!!inv && inv.unitsArray.map((anUnit, index)=>{

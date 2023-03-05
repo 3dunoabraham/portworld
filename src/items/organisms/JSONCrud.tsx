@@ -76,11 +76,11 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
 
 
     
-            <div className="flex flex-1 gap-2">
+            <div className="flex flex-1 gap-2 ">
                 {/* <hr className="my-2"/> */}
-                <div className="flex-col flex-align-stretch ">
+                <div className="flex flex-align-stretch ">
 
-                    <div className="flex-col  gap-4 flex-align-start my-2 ">
+                    <div className="flex  gap-4 flex-align-start my-2 ">
 
                             <JSONCrudForm {...{ theUrl:keyName in keyConfig ? keyConfig[keyName].baseUrl : "/api/settings/", q__queriedObj, 
                                 masterKeyName: keyName, backup: theJsonArray, queriedArray: localJson[keyName]
@@ -100,7 +100,7 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
                 {/* {keyName in localJson ? "y" : "n"} */}
 
                 {isClient && keyName in localJson &&
-                    <div className="flex-col flex-align-stretch w-min-250px flex-1">
+                    <div className="flex-col  flex-align-stretch w-min-250px flex-1">
                         <ItemsTable  displayConfigObj={compactTableConfigObj} boolConfig={["isCompact","isSelectable"]} updateSelectedArray={updateSelectedArray}
                             theArray={localJson[keyName]} urlBase="/user/"  deleteUnit={(id)=>{alert("delete from json: "+id)}} 
                         />
@@ -111,8 +111,8 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
                 
 
 
-            <div className="flex flex-1 gap-2">
-                <div className="flex-col flex-align-stretch ">
+            <div className="flex-col flex-1 gap-2 w-100 ">
+                <div className="flex-col flex-align-stretch w-100">
 
                     <div className="flex  gap-4 flex-align-start my-2 ">
 
@@ -132,10 +132,10 @@ export default function Component ({keyName , queriedObj, keyConfig, q__queriedO
                     {/* |{!!localJson[keyName][selectedItemIndex].colValue ? "y" : "n"}| */}
 
 
-                <div className="flex-col flex-align-stretch w-min-250px flex-1 ">
+                <div className="flex-col w-100 flex-align-stretch w-min-250px flex-1 ">
                     {keyName in localJson && selectedItemIndex > -1 && <>
                         {/* <hr className="my-2"/> */}
-                        <div className="tx-lg tx-bold-5 mb-1 mt-6">Item: {localJson[keyName][selectedItemIndex].key}</div>
+                        <div className="tx-lg tx-bold-5 mb-1 mt-2">Item: {localJson[keyName][selectedItemIndex].key}</div>
                         {/* <div className="tx- tx-bold-3 mb-1">JSON: {JSON.stringify(localJson[keyName][selectedItemIndex])}</div> */}
                         {/* <hr className="my-2"/> */}
                         {/* |{!!localJson[keyName][selectedItemIndex].colVal ? "y" : "n"}| */}

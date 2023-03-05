@@ -13,9 +13,9 @@ export default function Component({}) {
     
     return (<>
     <div className='flex px-4'>
-        <button onClick={()=>{handleClick("/")}} className='tx-white tx-lgx nodeco py-4' >
-            <div className='Q_xs_lg px-2'>IMS</div>
-            <div className='Q_lg_x'>Inventory</div>
+        <button onClick={()=>{handleClick("/")}} className=' tx-lgx nodeco py-4' >
+            <div className='Q_xs_lg px-2'>DUNO</div>
+            <div className='Q_lg_x'>Portfolio</div>
         </button>
     </div>
     </>)

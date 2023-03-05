@@ -26,12 +26,13 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
     const [q__unitsArray, unitsArray] = useQueryPlus({ queryKey: ['unitData'], refetchOnWindowFocus: false, retry: 1,
         queryFn: async () =>{
             if (!app.online) { return OFFLINE_UNITS_ARRAY }
-            let theUrl = API_UNITS+"uids/"
+            let theUrl = "https://duno.vercel.app/projects.json"
             let theRequest = await fetch(theUrl);
             let theJsonResult = await theRequest.json()
             return theJsonResult
         }
     },[])
+
     const inventoryItems = useMemo(()=>{
         let rdm = parseInt(`${Math.random()*1000 * unitsArray.length}`).toLocaleString("en-US")
 
@@ -42,8 +43,28 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
         ];
         return _inventoryItems
     },[unitsArray])
+    const cats = useMemo(()=>{
+        return getUniqueCategories(unitsArray)
+    },[unitsArray])
 
-
+    function getUniqueCategories(data) {
+        let categories = [];
+      
+        data.forEach(function(item) {
+          if(!categories.includes(item.category)) {
+            categories.push(item.category);
+          }
+        });
+      
+        return categories.sort(function (a, b) {
+            return a.length[0] - b.length[0];
+        }).reverse();
+    }
+    const companyTitles = {
+        art: "Art",
+        code: "Code",
+        game: "Games",
+    }
 
     return (
     <div className='flex-center w-100 h-min-100vh'>
@@ -53,7 +74,7 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                 
                 <div className="flex-center mb-8">
                     <h1 className="pt-4 tx-bold-5 flex-1 ">
-                        Inventory
+                        Abraham Duno's Portfolio
                     </h1>
                 </div>
             </div>
@@ -67,18 +88,34 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                     <FailedRequest preview={LOCAL_URL+"/?offline"} />
                 </div> 
             }
+            {/* {JSON.stringify(cats)} */}
             <div className='flex-wrap flex-justify-start gap-4' >
-                {unitsArray.length > 0 && inventoryItems.map((item, index) => (
-                    <ImsCard
-                        key={index}
-                        companyName={item.companyName}
-                        unitsArray={item.unitsArray}
-                        totalValue={item.totalValue}
-                        />
-                    ))
-                }
-            </div>
+                {cats.map((aCat, index) => {
+
+                    const catArray = unitsArray.filter((aUnit,index)=> {return aUnit.category == aCat})
+                    return (
+                        <div className="flex" key={index}>
+                                {/* {aCat} */}
+                                {/* |{catArray.length}| */}
+                                {/* |{JSON.stringify(unitsArray[0])} */}
+                                {unitsArray.length > 0 && inventoryItems.map((item, index) => (
+                                    <ImsCard
+                                        url={"/portfolio/"+aCat}
+                                        key={index}
+                                        title=" Projects"
+                                        subtitle=" Projects"
+                                        companyName={companyTitles[aCat]}
+                                        unitsArray={catArray}
+                                        // totalValue={item.totalValue}
+
+                                    />
+                                    ))
+                                }
+                        </div>
+                    )
+                })}
             
+            </div>
 
             <div className='flex-center  flex-1'>
             </div>
