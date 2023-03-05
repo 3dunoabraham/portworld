@@ -185,7 +185,7 @@ export const UnitBottomForm =({
                         values={values["characteristics"]}  
                         inputName={"characteristics"} 
                         optsObj={{
-                            axles:axlesObjArray,hitch_type:localJson.hitch_type,
+                            axles:axlesObjArray,hitch_type:[],
                             color: DEFAULT_COLOR_OBJARRAY
                         }} 
                         updateNewData={updateNewData} 
@@ -195,7 +195,7 @@ export const UnitBottomForm =({
                         inputsMapObj={inputsMapObj["characteristics"]} editMode={editMode} 
                         values={values["characteristics"]}  
                         optsObj={{
-                            axles:axlesObjArray,hitch_type:localJson.hitch_type,
+                            axles:axlesObjArray,hitch_type:[],
                             color: DEFAULT_COLOR_OBJARRAY
                         }} 
                     />
