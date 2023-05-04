@@ -248,13 +248,13 @@ const Component = forwardRef(({}:any, ref)=>{
             <CustomBox  position={[0, (1.68/2) - 0.95, zOut*1.32]} /> 
             {/* <HumanScale roofWidth={roofWidth} width={0.1} wallWidth={wallWidth} length={0.3}  position={[0, (1.68/2) - (yOut/2), zOut*1.3]} />  */}
 
-            {optsToggler["floor"].bool && <BaseballFieldFloorScale  position={[0,-yOut/2 - 4.95,0]} floorWidth={0.1}/>  }
+            {optsToggler["floor"].bool && <BaseballFieldFloorScale  position={[0,-yOut/2 - 2,0]} floorWidth={0.1}/>  }
             
 
 
             {optsToggler["roof"].bool && 
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlHead  />
+                    <GirlHead scale={0.5}  />
                 </group>
             }
             {/* {optsToggler["roof"].bool && <RoofContainer roofWidth={roofWidth} width={xOut/2} position={[0, yOut-(yOut/2), -(zOut+(wallWidth))]} wallWidth={wallWidth} length={((zOut*2)+(wallWidth*2))} /> } */}
@@ -266,7 +266,7 @@ const Component = forwardRef(({}:any, ref)=>{
             
             {optsToggler["frontwall"].bool &&
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlBody  />
+                    <GirlBody scale={0.5}  />
                 </group>
             }
             {/* {optsToggler["frontwall"].bool && <CustomWall length={zOut} width={xOut/2} roofHeight={yOut} position={[0, 0, (zOut-(wallWidth*1.5))]}  thickness={wallWidth}  />}
@@ -275,7 +275,7 @@ const Component = forwardRef(({}:any, ref)=>{
 
 {optsToggler["leftwall"].bool &&
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlLeftLeg  />
+                    <GirlLeftLeg scale={0.5}  />
                 </group>
                 // <CustomHorizontalWall position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
                 //     wallThick={wallWidth} pillars={ [[-xOut-(wallWidth/2), 0, 0]] } 
@@ -284,7 +284,7 @@ const Component = forwardRef(({}:any, ref)=>{
             
             {optsToggler["rightwall"].bool &&
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlRightLeg  />
+                    <GirlRightLeg scale={0.5}  />
                 </group>
                 // <CustomHorizontalWallDoor position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
                 //     wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
@@ -294,7 +294,7 @@ const Component = forwardRef(({}:any, ref)=>{
 
             {optsToggler["leftwall"].bool &&
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlLeftArm  />
+                    <GirlLeftArm scale={0.5}  />
                 </group>
                 // <CustomHorizontalWall position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
                 //     wallThick={wallWidth} pillars={ [[-xOut-(wallWidth/2), 0, 0]] } 
@@ -303,7 +303,7 @@ const Component = forwardRef(({}:any, ref)=>{
             
             {optsToggler["rightwall"].bool &&
                 <group rotation={[0,-Math.PI/2,0]}>
-                    <GirlRightArm  />
+                    <GirlRightArm scale={0.5}  />
                 </group>
                 // <CustomHorizontalWallDoor position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
                 //     wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
