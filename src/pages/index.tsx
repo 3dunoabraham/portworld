@@ -96,10 +96,10 @@ const Page: NextPageWithLayout = ({online,asd}:PageProps) => {
                     
                     <div className="pos-abs top-0 left-0 flex gap-2 tx-white  z-800 ">
                         <Link href="/" className="a tx-xl flex z-400 px-4">
-                            <div className="a tx-xl tx-bold-8">3</div>
-                            <div className="a tx-xl tx-bold-3">DU</div>
-                            <div className="a tx-xl tx-bold-5">N</div>
-                            <div className="a tx-xl tx-bold-6">O</div>
+                            <div className="a tx-xl tx-bold-8">N</div>
+                            <div className="a tx-xl tx-bold-3">G</div>
+                            <div className="a tx-xl tx-bold-5">ir</div>
+                            <div className="a tx-xl tx-bold-6">l</div>
                         </Link>
                         {/* <div className="a tx-xl">Duno</div> */}
                     </div>
@@ -391,7 +391,7 @@ type PageProps = {
 Page.getLayout = function getLayout(page: ReactElement) {
     return (
     <Layout>
-        <Head><title>Home</title></Head>
+        <Head><title>NGirl</title></Head>
         {/* <SidebarContainer sidebar={<SessionSidebar/>}> */}
             {page}
         {/* </SidebarContainer> */}

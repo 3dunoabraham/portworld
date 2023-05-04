@@ -1,8 +1,9 @@
 import { Canvas, useThree } from "@react-three/fiber";
 import { MdRoofing, MdBorderLeft, MdBorderRight } from "react-icons/md";
-import { MdFlipToBack } from "react-icons/md";
+import { MdFlipToBack, MdOutlineFace3 } from "react-icons/md";
 import { FaWarehouse } from "react-icons/fa";
 import { CgBorderLeft } from "react-icons/cg";
+import { RiBodyScanFill } from "react-icons/ri";
 import { TfiLayoutSidebarLeft } from "react-icons/tfi";
 import { AiOutlineCaretUp, AiOutlineVerticalAlignBottom } from "react-icons/ai";
 
@@ -22,6 +23,12 @@ import CustomBox from "./CustomBox";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import BaseballFieldFloorScale from "./BaseballFieldFloorScale";
+import GirlBody from "./GirlBody";
+import GirlRightLeg from "./GirlRightLeg";
+import GirlLeftLeg from "./GirlLeftLeg";
+import GirlHead from "./GirlHead";
+import GirlLeftArm from "./GirlLeftArm";
+import GirlRightArm from "./GirlRightArm";
 
 const Component = forwardRef(({}:any, ref)=>{
     // const { camera, gl: { domElement }, } = useThree();
@@ -164,7 +171,7 @@ const Component = forwardRef(({}:any, ref)=>{
                                 ${!optsToggler["roof"].bool ? "bg-b-hov-20 opaci-25 border-white tx-white" : " tx-blue border-blue"}
                             `}
                         >
-                            <div className="scale-150"><AiOutlineCaretUp /></div>
+                            <div className="scale-150"><MdOutlineFace3 /></div>
                         </button>
                     </div>
                     <div className="flex-center ">
@@ -174,7 +181,7 @@ const Component = forwardRef(({}:any, ref)=>{
                                 ${!optsToggler["frontwall"].bool ? "bg-b-hov-20 opaci-25 border-white tx-white" : " tx-blue border-blue"}
                             `}
                         >
-                            <FaWarehouse />
+                            <RiBodyScanFill />
                         </button>
                     </div>
                     <div className="flex gap-1">
@@ -235,33 +242,68 @@ const Component = forwardRef(({}:any, ref)=>{
             {/* <fog attach="fog" args={['#888888', 5, zOut*6]} /> */}
 
             <CustomBox  position={[0, (1.68/2) - 0.95, zOut*1.32]} /> 
-            <HumanScale roofWidth={roofWidth} width={0.1} wallWidth={wallWidth} length={0.3}  position={[0, (1.68/2) - (yOut/2), zOut*1.3]} /> 
+            {/* <HumanScale roofWidth={roofWidth} width={0.1} wallWidth={wallWidth} length={0.3}  position={[0, (1.68/2) - (yOut/2), zOut*1.3]} />  */}
 
-            {optsToggler["floor"].bool && <BaseballFieldFloorScale  position={[0,-yOut/2 - 0.05,0]} floorWidth={0.1}/>  }
+            {optsToggler["floor"].bool && <BaseballFieldFloorScale  position={[0,-yOut/2 - 4.95,0]} floorWidth={0.1}/>  }
             
 
 
-            {optsToggler["roof"].bool && <RoofContainer roofWidth={roofWidth} width={xOut/2} position={[0, yOut-(yOut/2), -(zOut+(wallWidth))]} wallWidth={wallWidth} length={((zOut*2)+(wallWidth*2))} /> }
+            {optsToggler["roof"].bool && 
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlHead  />
+                </group>
+            }
+            {/* {optsToggler["roof"].bool && <RoofContainer roofWidth={roofWidth} width={xOut/2} position={[0, yOut-(yOut/2), -(zOut+(wallWidth))]} wallWidth={wallWidth} length={((zOut*2)+(wallWidth*2))} /> } */}
             <CustomPillars position={[0, 0, 0]}  height={yOut*1.05} diameter={0.05} pillars={boundaryBox} /> 
 
 
             {optsToggler["backwall"].bool && <CustomWall length={zOut} width={xOut/2} roofHeight={yOut} position={[0, 0, -(zOut-(wallWidth*(1.5/2)))]}  thickness={wallWidth}  />}
             {optsToggler["roof"].bool && optsToggler["backwall"].bool && <ShapeContainer wallThick={wallWidth} width={xOut/2} position={[0, yOut-(yOut/2), -(zOut)]} thickness={wallWidth} />}
             
-            {optsToggler["frontwall"].bool && <CustomWall length={zOut} width={xOut/2} roofHeight={yOut} position={[0, 0, (zOut-(wallWidth*1.5))]}  thickness={wallWidth}  />}
-            {optsToggler["roof"].bool && optsToggler["frontwall"].bool && <ShapeContainer wallThick={wallWidth} width={xOut/2} position={[0, yOut-(yOut/2), (zOut-wallWidth)]}  thickness={wallWidth} />}
+            {optsToggler["frontwall"].bool &&
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlBody  />
+                </group>
+            }
+            {/* {optsToggler["frontwall"].bool && <CustomWall length={zOut} width={xOut/2} roofHeight={yOut} position={[0, 0, (zOut-(wallWidth*1.5))]}  thickness={wallWidth}  />}
+            {optsToggler["roof"].bool && optsToggler["frontwall"].bool && <ShapeContainer wallThick={wallWidth} width={xOut/2} position={[0, yOut-(yOut/2), (zOut-wallWidth)]}  thickness={wallWidth} />} */}
 
 
-            {optsToggler["leftwall"].bool &&
-                <CustomHorizontalWall position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
-                    wallThick={wallWidth} pillars={ [[-xOut-(wallWidth/2), 0, 0]] } 
-                /> 
+{optsToggler["leftwall"].bool &&
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlLeftLeg  />
+                </group>
+                // <CustomHorizontalWall position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
+                //     wallThick={wallWidth} pillars={ [[-xOut-(wallWidth/2), 0, 0]] } 
+                // /> 
             }
             
             {optsToggler["rightwall"].bool &&
-                <CustomHorizontalWallDoor position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
-                    wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
-                /> 
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlRightLeg  />
+                </group>
+                // <CustomHorizontalWallDoor position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
+                //     wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
+                // /> 
+            }
+            
+
+            {optsToggler["leftwall"].bool &&
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlLeftArm  />
+                </group>
+                // <CustomHorizontalWall position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
+                //     wallThick={wallWidth} pillars={ [[-xOut-(wallWidth/2), 0, 0]] } 
+                // /> 
+            }
+            
+            {optsToggler["rightwall"].bool &&
+                <group rotation={[0,-Math.PI/2,0]}>
+                    <GirlRightArm  />
+                </group>
+                // <CustomHorizontalWallDoor position={[0, 0, 0]}  roofHeight={yOut*1.01} diameter={0.05} length={(zOut*2)-wallWidth}
+                //     wallThick={wallWidth} pillars={ [[xOut+(wallWidth/2), 0, 0]] } 
+                // /> 
             }
             {/* <TheCamera /> */}
         </Canvas>

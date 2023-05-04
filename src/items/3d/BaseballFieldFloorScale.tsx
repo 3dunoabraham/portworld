@@ -18,7 +18,7 @@ export default function Component ({ position=[0,0,0] , floorWidth=0.1}: BoxProp
   
     useFrame((state, delta) => {
         if (meshRef.current) {
-            meshRef.current.position.z = position[2] + ( clicked ? -5 : 0 )
+            // meshRef.current.position.z = position[2] + ( clicked ? -5 : 0 )
             // meshRef.current.rotation.y += delta;
         }
     });
