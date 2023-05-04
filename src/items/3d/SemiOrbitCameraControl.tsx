@@ -42,7 +42,8 @@ export default function Component ({ /* height, width, length */ }) {
 
                 args={[camera, domElement]}
                 enableZoom={false}
-                enableDamping={false} enablePan={false}
+                enableDamping={false}
+                enablePan={false}
                 ref={controls}
             />
         //  </>

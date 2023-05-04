@@ -20,7 +20,7 @@ import CustomHorizontalWallDoor from "./CustomHorizontalWallDoor";
 
 import { forwardRef, useContext, useImperativeHandle, useMemo, useState,  } from 'react'
 import CustomBox from "./CustomBox";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { MapControls, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import BaseballFieldFloorScale from "./BaseballFieldFloorScale";
 import GirlBody from "./GirlBody";
@@ -225,15 +225,19 @@ const Component = forwardRef(({}:any, ref)=>{
                 </div>
             </div>
         </div>
-        <Canvas shadows  onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove}
+        <Canvas shadows /*  onMouseDown={handleMouseDown} onMouseUp={handleMouseUp} onMouseMove={handleMouseMove} */
             
             // camera={{ fov: 50, position: [-xOut*2, yOut/4, zOut*2] }} 
-            camera={{ fov: 90, position: [0,0,zOut*2] }} 
+            camera={{ fov: 90 /* , position: [0,0,zOut*2]  */}} 
         >
-            <SemiOrbitCameraControl  />
+            {/* <SemiOrbitCameraControl  /> */}
+            <OrbitControls enableZoom={false}
+                position={[0,0,40]}
+            />
+            {/* <MapControls /> */}
+
             {/* <PerspectiveCamera  position={[-xOut*1.5, yOut/2, zOut*3]} /> */}
             {/* <SemiOrbitCameraControl width={20} length={10} height={20}  /> */}
-            {/* <OrbitControls /> */}
             {/* <Camera /> */}
             <ambientLight intensity={0.35} />
             <pointLight castShadow intensity={1.2} position={[xOut*2, yOut*2, zOut*1.5]} />
